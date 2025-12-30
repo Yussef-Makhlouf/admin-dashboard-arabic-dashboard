@@ -5,11 +5,10 @@ import * as ProgressPrimitive from '@radix-ui/react-progress'
 
 import { cn } from '@/lib/utils'
 
-function Progress({
-  className,
-  value,
-  ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+const Progress = React.forwardRef<
+  React.ElementRef<typeof ProgressPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
+>(({ className, value, ...props }, ref) => {
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
@@ -26,6 +25,7 @@ function Progress({
       />
     </ProgressPrimitive.Root>
   )
-}
+})
+Progress.displayName = ProgressPrimitive.Root.displayName
 
 export { Progress }
