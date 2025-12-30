@@ -61,7 +61,7 @@ export default function FAQPage() {
     const fetchCategories = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/faq", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/faq", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             const data = await res.json()
@@ -79,7 +79,7 @@ export default function FAQPage() {
     const createCategory = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/faq", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/faq", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export default function FAQPage() {
     const updateCategory = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -127,7 +127,7 @@ export default function FAQPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -144,7 +144,7 @@ export default function FAQPage() {
     const toggleCategory = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${id}/toggle`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${id}/toggle`, {
                 method: "PATCH",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -161,7 +161,7 @@ export default function FAQPage() {
     const addQuestion = async (categoryId: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${categoryId}/questions`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${categoryId}/questions`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -184,7 +184,7 @@ export default function FAQPage() {
     const updateQuestion = async (categoryId: string, questionId: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${categoryId}/questions/${questionId}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${categoryId}/questions/${questionId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -209,7 +209,7 @@ export default function FAQPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${categoryId}/questions/${questionId}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${categoryId}/questions/${questionId}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -226,7 +226,7 @@ export default function FAQPage() {
     const toggleQuestion = async (categoryId: string, questionId: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/faq/${categoryId}/questions/${questionId}/toggle`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/faq/${categoryId}/questions/${questionId}/toggle`, {
                 method: "PATCH",
                 headers: { Authorization: `Bearer ${token}` },
             })

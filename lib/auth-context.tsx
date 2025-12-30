@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     const fetchUser = async (authToken: string) => {
         try {
-            const res = await fetch('http://localhost:5000/api/auth/me', {
+            const res = await fetch('https://admin-api-five-pi.vercel.app/api/auth/me', {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 },
@@ -60,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     const login = async (email: string, password: string) => {
-        const res = await fetch('http://localhost:5000/api/auth/login', {
+        const res = await fetch('https://admin-api-five-pi.vercel.app/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

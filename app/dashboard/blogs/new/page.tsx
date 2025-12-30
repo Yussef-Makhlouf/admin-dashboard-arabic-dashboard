@@ -46,7 +46,7 @@ export default function NewBlogPage() {
         const uploadFormData = new FormData()
         uploadFormData.append("file", file)
 
-        const res = await fetch("http://localhost:5000/api/media/upload", {
+        const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: uploadFormData,
@@ -99,7 +99,7 @@ export default function NewBlogPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/blogs", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/blogs", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

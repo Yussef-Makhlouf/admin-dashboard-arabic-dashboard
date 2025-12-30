@@ -40,7 +40,7 @@ export default function ServicesPage() {
     const fetchServices = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/services", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/services", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -60,7 +60,7 @@ export default function ServicesPage() {
     const toggleService = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/services/${id}/toggle`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/services/${id}/toggle`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -81,7 +81,7 @@ export default function ServicesPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/services/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/services/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

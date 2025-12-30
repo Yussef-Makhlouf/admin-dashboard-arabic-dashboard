@@ -44,7 +44,7 @@ export default function MediaPage() {
     const fetchMedia = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/media", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/media", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             const data = await res.json()
@@ -68,7 +68,7 @@ export default function MediaPage() {
                 const formData = new FormData()
                 formData.append("file", file)
 
-                const res = await fetch("http://localhost:5000/api/media/upload", {
+                const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
                     method: "POST",
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -106,7 +106,7 @@ export default function MediaPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/media/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/media/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })

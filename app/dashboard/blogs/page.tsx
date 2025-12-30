@@ -45,7 +45,7 @@ export default function BlogsPage() {
     const fetchBlogs = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/blogs", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/blogs", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -65,7 +65,7 @@ export default function BlogsPage() {
     const toggleFeatured = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/blogs/${id}/featured`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/blogs/${id}/featured`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ export default function BlogsPage() {
     const togglePublish = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/blogs/${id}/publish`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/blogs/${id}/publish`, {
                 method: "PATCH",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -105,7 +105,7 @@ export default function BlogsPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/blogs/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -40,7 +40,7 @@ export default function EditBlogPage() {
         const fetchBlog = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await fetch(`http://localhost:5000/api/blogs/id/${params.id}`, {
+                const res = await fetch(`https://admin-api-five-pi.vercel.app/api/blogs/id/${params.id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 })
                 const data = await res.json()
@@ -83,7 +83,7 @@ export default function EditBlogPage() {
         const uploadFormData = new FormData()
         uploadFormData.append("file", file)
 
-        const res = await fetch("http://localhost:5000/api/media/upload", {
+        const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: uploadFormData,
@@ -136,7 +136,7 @@ export default function EditBlogPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/blogs/${params.id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/blogs/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

@@ -22,7 +22,7 @@ export default function DashboardPage() {
 
     const fetchStats = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/stats")
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/stats")
             const data = await res.json()
             if (data.success) {
                 setStats(data.data)

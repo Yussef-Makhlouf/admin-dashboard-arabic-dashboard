@@ -110,7 +110,7 @@ export default function EditServicePage() {
         const fetchService = async () => {
             try {
                 const token = localStorage.getItem("token")
-                const res = await fetch(`http://localhost:5000/api/services/id/${params.id}`, {
+                const res = await fetch(`https://admin-api-five-pi.vercel.app/api/services/id/${params.id}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 })
                 const data = await res.json()
@@ -145,7 +145,7 @@ export default function EditServicePage() {
         const formData = new FormData()
         formData.append("file", file)
 
-        const res = await fetch("http://localhost:5000/api/media/upload", {
+        const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData,
@@ -353,7 +353,7 @@ export default function EditServicePage() {
                 }))
             }
 
-            const res = await fetch(`http://localhost:5000/api/services/${params.id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/services/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

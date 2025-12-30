@@ -15,11 +15,11 @@ const nextConfig = {
         return [
             {
                 source: '/api/:path*',
-                destination: 'http://localhost:5000/api/:path*',
+                destination: 'https://admin-api-five-pi.vercel.app/api/:path*',
             },
             {
                 source: '/uploads/:path*',
-                destination: 'http://localhost:5000/uploads/:path*',
+                destination: 'https://admin-api-five-pi.vercel.app/uploads/:path*',
             },
         ]
     },

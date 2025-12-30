@@ -44,7 +44,7 @@ export function ImageUpload({
         const formData = new FormData()
         formData.append("file", file)
 
-        const res = await fetch("http://localhost:5000/api/media/upload", {
+        const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData,
@@ -186,7 +186,7 @@ export function GalleryUpload({ images, onChange, maxImages = 10 }: GalleryUploa
         const formData = new FormData()
         formData.append("file", file)
 
-        const res = await fetch("http://localhost:5000/api/media/upload", {
+        const res = await fetch("https://admin-api-five-pi.vercel.app/api/media/upload", {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
             body: formData,

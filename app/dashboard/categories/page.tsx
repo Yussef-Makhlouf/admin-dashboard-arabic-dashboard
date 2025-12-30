@@ -46,7 +46,7 @@ export default function CategoriesPage() {
     const fetchCategories = async () => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch("http://localhost:5000/api/categories", {
+            const res = await fetch("https://admin-api-five-pi.vercel.app/api/categories", {
                 headers: { Authorization: `Bearer ${token}` },
             })
             const data = await res.json()
@@ -66,8 +66,8 @@ export default function CategoriesPage() {
         try {
             const token = localStorage.getItem("token")
             const url = editingId
-                ? `http://localhost:5000/api/categories/${editingId}`
-                : "http://localhost:5000/api/categories"
+                ? `https://admin-api-five-pi.vercel.app/api/categories/${editingId}`
+                : "https://admin-api-five-pi.vercel.app/api/categories"
 
             const res = await fetch(url, {
                 method: editingId ? "PUT" : "POST",
@@ -95,7 +95,7 @@ export default function CategoriesPage() {
     const toggleCategory = async (id: string) => {
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/categories/${id}/toggle`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/categories/${id}/toggle`, {
                 method: "PATCH",
                 headers: { Authorization: `Bearer ${token}` },
             })
@@ -114,7 +114,7 @@ export default function CategoriesPage() {
 
         try {
             const token = localStorage.getItem("token")
-            const res = await fetch(`http://localhost:5000/api/categories/${id}`, {
+            const res = await fetch(`https://admin-api-five-pi.vercel.app/api/categories/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             })
