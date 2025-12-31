@@ -121,7 +121,7 @@ export default function MediaPage() {
     }
 
     const copyUrl = (item: Media) => {
-        const url = `http://localhost:5000${item.url}`
+        const url = item.url
         navigator.clipboard.writeText(url)
         setCopiedId(item._id)
         setTimeout(() => setCopiedId(null), 2000)
@@ -200,7 +200,7 @@ export default function MediaPage() {
                         <Card key={item._id} className="group overflow-hidden">
                             <div className="relative aspect-square bg-muted">
                                 <Image
-                                    src={`http://localhost:5000${item.url}`}
+                                    src={item.url}
                                     alt={item.originalName}
                                     fill
                                     className="object-cover"

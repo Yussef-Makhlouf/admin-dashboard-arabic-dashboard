@@ -153,7 +153,7 @@ export default function EditServicePage() {
 
         const data = await res.json()
         if (data.success) {
-            return `http://localhost:5000${data.data.url}`
+            return data.data.url
         }
         throw new Error("فشل رفع الصورة")
     }
