@@ -38,7 +38,7 @@ function setRef<T>(ref: PossibleRef<T>, value: T) {
   }
 
   if (ref !== null && ref !== undefined) {
-    ref.current = value
+    ; (ref as React.MutableRefObject<T>).current = value
   }
 }
 
@@ -250,7 +250,7 @@ interface EyeDropper {
 declare global {
   interface Window {
     EyeDropper?: {
-      new (): EyeDropper
+      new(): EyeDropper
     }
   }
 }
@@ -276,11 +276,11 @@ function hexToRgb(hex: string, alpha?: number): ColorValue {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
   return result
     ? {
-        r: Number.parseInt(result[1] ?? "0", 16),
-        g: Number.parseInt(result[2] ?? "0", 16),
-        b: Number.parseInt(result[3] ?? "0", 16),
-        a: alpha ?? 1,
-      }
+      r: Number.parseInt(result[1] ?? "0", 16),
+      g: Number.parseInt(result[2] ?? "0", 16),
+      b: Number.parseInt(result[3] ?? "0", 16),
+      a: alpha ?? 1,
+    }
     : { r: 0, g: 0, b: 0, a: alpha ?? 1 }
 }
 
@@ -652,7 +652,7 @@ function createColorPickerStore(
         listenersRef.current.add(cb)
         return () => listenersRef.current?.delete(cb)
       }
-      return () => {}
+      return () => { }
     },
     getState: () =>
       stateRef.current || {
@@ -776,10 +776,10 @@ function useColorPickerContext(consumerName: string) {
 
 interface ColorPickerRootProps
   extends Omit<React.ComponentProps<"div">, "onValueChange">,
-    Pick<
-      React.ComponentProps<typeof Popover>,
-      "defaultOpen" | "open" | "onOpenChange" | "modal"
-    > {
+  Pick<
+    React.ComponentProps<typeof Popover>,
+    "defaultOpen" | "open" | "onOpenChange" | "modal"
+  > {
   value?: string
   defaultValue?: string
   onValueChange?: (value: string) => void
@@ -876,7 +876,7 @@ interface ColorPickerRootImplProps
     | "format"
     | "defaultFormat"
     | "onFormatChange"
-  > {}
+  > { }
 
 function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
   const {
@@ -993,7 +993,7 @@ function ColorPickerRootImpl(props: ColorPickerRootImplProps) {
 }
 
 interface ColorPickerTriggerProps
-  extends React.ComponentProps<typeof PopoverTrigger> {}
+  extends React.ComponentProps<typeof PopoverTrigger> { }
 
 function ColorPickerTrigger(props: ColorPickerTriggerProps) {
   const { asChild, ...triggerProps } = props
@@ -1009,7 +1009,7 @@ function ColorPickerTrigger(props: ColorPickerTriggerProps) {
 }
 
 interface ColorPickerContentProps
-  extends React.ComponentProps<typeof PopoverContent> {}
+  extends React.ComponentProps<typeof PopoverContent> { }
 
 function ColorPickerContent(props: ColorPickerContentProps) {
   const { asChild, className, children, ...popoverContentProps } = props
@@ -1153,7 +1153,7 @@ function ColorPickerArea(props: ColorPickerAreaProps) {
 }
 
 interface ColorPickerHueSliderProps
-  extends React.ComponentProps<typeof SliderPrimitive.Root> {}
+  extends React.ComponentProps<typeof SliderPrimitive.Root> { }
 
 function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
   const { className, ...sliderProps } = props
@@ -1199,7 +1199,7 @@ function ColorPickerHueSlider(props: ColorPickerHueSliderProps) {
 }
 
 interface ColorPickerAlphaSliderProps
-  extends React.ComponentProps<typeof SliderPrimitive.Root> {}
+  extends React.ComponentProps<typeof SliderPrimitive.Root> { }
 
 function ColorPickerAlphaSlider(props: ColorPickerAlphaSliderProps) {
   const { className, ...sliderProps } = props
@@ -1316,7 +1316,7 @@ function ColorPickerSwatch(props: ColorPickerSwatchProps) {
 }
 
 interface ColorPickerEyeDropperProps
-  extends React.ComponentProps<typeof Button> {}
+  extends React.ComponentProps<typeof Button> { }
 
 function ColorPickerEyeDropper(props: ColorPickerEyeDropperProps) {
   const { children, size, ...buttonProps } = props
@@ -1366,7 +1366,7 @@ function ColorPickerEyeDropper(props: ColorPickerEyeDropperProps) {
 
 interface ColorPickerFormatSelectProps
   extends Omit<React.ComponentProps<typeof Select>, "value" | "onValueChange">,
-    Pick<React.ComponentProps<typeof SelectTrigger>, "size" | "className"> {}
+  Pick<React.ComponentProps<typeof SelectTrigger>, "size" | "className"> { }
 
 function ColorPickerFormatSelect(props: ColorPickerFormatSelectProps) {
   const { size, className, ...selectProps } = props
@@ -1497,7 +1497,7 @@ const inputGroupItemVariants = cva(
 
 interface InputGroupItemProps
   extends React.ComponentProps<typeof Input>,
-    VariantProps<typeof inputGroupItemVariants> {}
+  VariantProps<typeof inputGroupItemVariants> { }
 
 function InputGroupItem({
   className,
