@@ -26,7 +26,7 @@ import {
  * @see https://github.com/radix-ui/primitives/blob/main/packages/react/compose-refs/src/compose-refs.tsx
  */
 
-type PossibleRef<T> = React.Ref<T> | undefined
+type PossibleRef<T> = React.Ref<T> | React.LegacyRef<T> | undefined
 
 /**
  * Set a given ref to a given value
@@ -716,9 +716,9 @@ function createColorPickerStore(
     },
     notify: () => {
       if (listenersRef.current) {
-        for (const cb of listenersRef.current) {
+        Array.from(listenersRef.current).forEach((cb) => {
           cb()
-        }
+        })
       }
     },
   }
@@ -1365,8 +1365,10 @@ function ColorPickerEyeDropper(props: ColorPickerEyeDropperProps) {
 }
 
 interface ColorPickerFormatSelectProps
-  extends Omit<React.ComponentProps<typeof Select>, "value" | "onValueChange">,
-  Pick<React.ComponentProps<typeof SelectTrigger>, "size" | "className"> { }
+  extends Omit<React.ComponentProps<typeof Select>, "value" | "onValueChange"> {
+  size?: "sm" | "default"
+  className?: string
+}
 
 function ColorPickerFormatSelect(props: ColorPickerFormatSelectProps) {
   const { size, className, ...selectProps } = props
@@ -1392,8 +1394,7 @@ function ColorPickerFormatSelect(props: ColorPickerFormatSelectProps) {
     >
       <SelectTrigger
         data-slot="color-picker-format-select-trigger"
-        size={size ?? "sm"}
-        className={cn(className)}
+        className={cn(size === "sm" && "h-8", className)}
       >
         <SelectValue />
       </SelectTrigger>

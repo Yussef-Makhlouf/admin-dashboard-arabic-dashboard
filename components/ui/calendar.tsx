@@ -129,9 +129,9 @@ function Calendar({
           return (
             <div
               data-slot="calendar"
-              ref={rootRef}
+              ref={rootRef as any}
               className={cn(className)}
-              {...props}
+              {...(props as any)}
             />
           )
         },
@@ -160,7 +160,7 @@ function Calendar({
           return (
             <td {...props}>
               <div className="flex size-(--cell-size) items-center justify-center text-center">
-                {children}
+                {children as any}
               </div>
             </td>
           )
@@ -205,7 +205,7 @@ function CalendarDayButton({
         defaultClassNames.day,
         className,
       )}
-      {...props}
+      {...(props as any)}
     />
   )
 }
